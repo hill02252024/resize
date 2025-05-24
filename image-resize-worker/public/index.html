@@ -241,7 +241,14 @@
       const data = new FormData(form);
 
       // 若百分比，後端也可直接處理
-      const resp = await fetch('/resize', { method: 'POST', body: data });
+      const resp = await fetch(
+  'https://image-resize-worker.hill0225.workers.dev/resize',
+  {
+    method: 'POST',
+    body: data,
+  }
+);
+
       if (!resp.ok) {
         alert(await resp.text());
         return;
