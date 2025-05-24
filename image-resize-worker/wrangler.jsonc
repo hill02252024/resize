@@ -1,0 +1,39 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+ {
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "image-resize-worker",
+  
+	// Worker 入口，指向你的 src/index.ts 編譯後的檔案
+	"main": "src/index.ts",
+  
+	"compatibility_date": "2025-05-24",
+	"compatibility_flags": [
+	  "nodejs_compat",
+	  "global_fetch_strictly_public"
+	],
+  
+	// 靜態資源：把 public/ 資料夾當作 Pages Site 發布
+	"site": {
+	  "bucket": "./public"
+	},
+  
+	"observability": {
+	  "enabled": true
+	},
+  
+	// 只用 Pages 網域，不同步 workers.dev
+	"workers_dev": false,
+  
+	// 讓 /resize* 請求進到此 Worker
+	"routes": [
+	  "resize.pages.dev/resize*"
+	]
+  
+	/**
+	 * 你可以在這裡繼續添加 vars、services、kv_namespaces 等設定
+	 */
+  }
+  
