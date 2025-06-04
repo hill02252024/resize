@@ -1,0 +1,9 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+img, canvas {
+  max-width: 100%;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
